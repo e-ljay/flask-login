@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="mb-4" style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #83672e;">User-Authentication System</h1>
+
+            {% if user %}
+                <!-- Profile Section -->
+                <div class="profile-picture-container mb-4">
+                    <img src="{{ user.profile_picture }}" alt="Profile Picture" class="profile-picture shadow-lg">
+                </div>
+                <p class="h4" style="font-family: 'Roboto', sans-serif; color: #333;">Hello, <span style="color: #83672e;">{{ user.username }}</span>!</p>
+            {% else %}
+                <p class="h5" style="font-family: 'Roboto', sans-serif; color: #333;">Please log in to continue.</p>
+                <div class="d-grid gap-3"> <!-- Increased gap here -->
+                    <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg shadow mb-3">Log in</a> <!-- Added bottom margin -->
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-secondary btn-lg shadow">Register</a> <!-- Button placed below -->
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <style>
+        /* Profile picture container styles */
+        .profile-picture-container {
+            text-align: center; /* Center the profile picture */
+            margin-bottom: 20px; /* Space below the image */
+        }
+
+        /* Profile picture styles */
+        .profile-picture {
+            width: 250px; /* Adjust the size of the circle */
+            height: 250px; /* Ensure it's a perfect circle */
+            border-radius: 50%; /* Makes the image round */
+            object-fit: cover; /* Ensures the image covers the circle without distortion */
+            border: 4px solid #83672e; 
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+        }
+
+        /* Ensuring the page content is centered and responsive */
+        .container {
+            max-width: 900px; /* Limit the width for better readability */
+            background: linear-gradient(145deg, #ffffff, #e6e6e6); 
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the login/register buttons */
+        .btn-outline-primary, .btn-outline-secondary {
+            font-size: 18px;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: 2px solid #83672e;
+            color: #83672e;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-outline-primary:hover, .btn-outline-secondary:hover {
+            background-color: #83672e;
+            color: white;
+        }
+
+        /* Responsive Design: Adjust text size for smaller screens */
+        @media (max-width: 768px) {
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+            }
+            .h4, .h5 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+{% endblock %}

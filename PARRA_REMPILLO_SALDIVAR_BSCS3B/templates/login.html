@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <h1 class="text-center mb-4" style="font-family: 'Playfair Display', serif; font-size: 3rem; color: #83672e;">Login</h1>
+
+                <!-- Login Form -->
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label" style="font-family: 'Roboto', sans-serif; color: #333;">Username</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label" style="font-family: 'Roboto', sans-serif; color: #333;">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-outline-primary btn-lg shadow">Login</button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p>Don't have an account? <a href="{{ url_for('register') }}" class="btn btn-outline-secondary btn-lg shadow">Register here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Container styles for the login page */
+        .container {
+            max-width: 900px; /* Limit the width for better readability */
+            background: linear-gradient(145deg, #ffffff, #e6e6e6); 
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Form label styling */
+        .form-label {
+            font-weight: bold;
+        }
+
+        /* Style the login/register buttons */
+        .btn-outline-primary, .btn-outline-secondary {
+            font-size: 18px;
+            padding: 12px 30px;
+            border-radius: 25px;
+            border: 2px solid #83672e;
+            color: #83672e;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-outline-primary:hover, .btn-outline-secondary:hover {
+            background-color: #83672e;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 20px; /* Less top margin on smaller screens */
+            }
+            .h4, .h5 {
+                font-size: 1.4rem; /* Slightly larger text for smaller screens */
+            }
+            .btn-outline-primary, .btn-outline-secondary {
+                font-size: 1.2rem;
+                padding: 12px 28px;
+            }
+        }
+    </style>
+{% endblock %}
